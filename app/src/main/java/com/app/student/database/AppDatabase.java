@@ -7,10 +7,12 @@ import androidx.room.RoomDatabase;
 import com.app.student.MyApp;
 import com.app.student.model.Student;
 import com.app.student.model.StudentDao;
+import com.app.student.model.User;
+import com.app.student.model.UserDao;
 
 
 //app数据库初始化
-@Database(entities = {Student.class}, version = 1, exportSchema = false)
+@Database(entities = {Student.class, User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "student_app.db";
@@ -31,4 +33,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract StudentDao studentDao();
+
+    public abstract UserDao userDao();
 }

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app.student.MyApp;
 import com.app.student.database.AppDatabase;
 import com.app.student.databinding.ActivityWelcomeBinding;
+import com.app.student.ui.login.LoginActivity;
 import com.app.student.util.DataCreator;
 import com.app.student.util.SharedPreferencesUtils;
 import com.blankj.utilcode.constant.PermissionConstants;
@@ -33,7 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
         PermissionUtils.permission(PermissionConstants.STORAGE).request();
         if (SharedPreferencesUtils.getBoolean(MyApp.getMyApplication().getApplicationContext(), "isDataInit", false)) {
             //如果已经做了初始化，那么直接进入课表页面
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
             return;
@@ -43,8 +44,6 @@ public class WelcomeActivity extends AppCompatActivity {
         mHandler.sendEmptyMessageDelayed(1, 1000);
         //动态权限申请
         PermissionUtils.permission(PermissionConstants.STORAGE).request();
-
-
     }
 
 
@@ -60,7 +59,7 @@ public class WelcomeActivity extends AppCompatActivity {
             final Activity activity = mActivityReference.get();
             if (activity != null) {
                 Log.i("app", AppDatabase.getInstance().studentDao().getStudentClass().toString());
-                Intent intent = new Intent(activity, MainActivity.class);
+                Intent intent = new Intent(activity, LoginActivity.class);
                 activity.startActivity(intent);
                 activity.finish();
             }
