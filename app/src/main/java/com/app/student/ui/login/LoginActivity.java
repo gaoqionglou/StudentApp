@@ -14,6 +14,7 @@ import com.app.student.base.CommonActivity;
 import com.app.student.common.Constants;
 import com.app.student.databinding.ActivityLoginBinding;
 import com.app.student.ui.register.RegisterActivity;
+import com.app.student.ui.studentlist.StudentListActivity;
 
 import static com.app.student.common.Constants.REQUEST_CODE_REGISTER;
 import static com.app.student.util.ToastUtil.toast;
@@ -38,9 +39,9 @@ public class LoginActivity extends CommonActivity {
                 toast("尚未注册，请先注册");
                 return;
             }
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            LoginActivity.this.finish();
+            Intent intent = new Intent(LoginActivity.this, StudentListActivity.class);
+            startActivity(intent);
+            LoginActivity.this.finish();
             Log.i(Constants.TAG, loginUser.toString());
 
         });

@@ -30,7 +30,7 @@ public class DataCreator {
                 String studentPhone = obj.getString("studentPhone");
 
                 Student std = new Student();
-                std.setStudentId(UUIDCreator.uuid());
+                std.setStudentId(UUIDCreator.getRandom(10));
                 std.setStudentGender(studentGender);
                 std.setStudentName(studentName);
                 std.setStudentBirth(studentBirth);

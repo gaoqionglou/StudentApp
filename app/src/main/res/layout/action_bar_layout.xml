@@ -21,4 +21,16 @@
         android:textColor="#ffffff"
         android:textSize="@dimen/title_text_size" />
 
+
+    <TextView
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:text="设置"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/title_text_size"
+        android:visibility="gone" />
+
 </RelativeLayout>

@@ -36,6 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
+        <activity android:name=".ui.studentlist.StudentListActivity" />
+        <activity android:name=".ui.add.AddStudentActivity" />
     </application>
 
 </manifest>

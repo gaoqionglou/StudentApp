@@ -14,7 +14,7 @@ public interface StudentDao {
     void insertStudent(Student std);
 
     @Query("SELECT * FROM Student where student_id = :stdId")
-    List<Student> getStudentClassesByDay(String stdId);
+    List<Student> getStudentById(String stdId);
 
     @Update
     void updateStudent(Student std);
