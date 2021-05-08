@@ -1,6 +1,7 @@
 package com.app.student.ui.studentlist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,14 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.viewItemBinding.studentNo.setText("学号: " + std.getStudentId());
         holder.viewItemBinding.studentGender.setText("性别: " + std.getStudentGender());
         holder.viewItemBinding.studentName.setText("姓名: " + std.getStudentName());
-
+        holder.viewItemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, StudentInfoActivity.class);
+                intent.putExtra("student", std);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
 

@@ -5,9 +5,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 //数据库 学生表
 @Entity(tableName = "Student")
-public class Student {
+public class Student implements Serializable {
 
     @NonNull
     @PrimaryKey()

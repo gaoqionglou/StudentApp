@@ -7,10 +7,13 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.app.student.R;
 import com.app.student.base.ThemeActivity;
 import com.app.student.database.AppDatabase;
 import com.app.student.databinding.ActivityAddStudentBinding;
 import com.app.student.model.Student;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.blankj.utilcode.util.ToastUtils;
 
 import java.text.SimpleDateFormat;
@@ -40,14 +43,28 @@ public class AddStudentActivity extends ThemeActivity {
         getActionBarLayoutBinding().setting.setOnClickListener(v -> {
             addStudent();
         });
-
+        addStudentBinding.etStudentBirth.setFocusable(false);
+        addStudentBinding.etStudentBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //时间选择器
+                new TimePickerBuilder(AddStudentActivity.this, new OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date, View v) {
+                        addStudentBinding.etStudentBirth.setText(getTime(date));
+                    }
+                }).setType(new boolean[]{true, true, true, false, false, false})
+                        .build().show();
+            }
+        });
     }
 
 
     public void addStudent() {
 
         studentBirth = addStudentBinding.etStudentBirth.getText().toString();
-        studentGender = addStudentBinding.etStudentGender.getText().toString();
+        int genderButtonId = addStudentBinding.genderRG.getCheckedRadioButtonId();
+        studentGender = genderButtonId == R.id.male ? "男" : "女";
         studentHometown = addStudentBinding.etStudentHometown.getText().toString();
         studentId = addStudentBinding.etStudentId.getText().toString();
         studentMajor = addStudentBinding.etStudentMajor.getText().toString();
@@ -82,7 +99,7 @@ public class AddStudentActivity extends ThemeActivity {
     }
 
     public String getTime(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-HH-mm");
         return format.format(date);
     }
 

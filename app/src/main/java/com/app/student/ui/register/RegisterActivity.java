@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +14,11 @@ import com.app.student.base.ThemeActivity;
 import com.app.student.databinding.ActiviyRegisterBinding;
 import com.app.student.model.Student;
 import com.app.student.model.User;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.app.student.util.ToastUtil.toast;
 
@@ -29,7 +35,21 @@ public class RegisterActivity extends ThemeActivity {
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         setTitle("注册");
         setContentView(activiyRegisterBinding.getRoot());
-        //判断是否有相机权限
+        activiyRegisterBinding.etBirth.setFocusable(false);
+        activiyRegisterBinding.etBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //时间选择器
+                new TimePickerBuilder(RegisterActivity.this, new OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date, View v) {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-HH-mm");
+                        activiyRegisterBinding.etBirth.setText(format.format(date));
+                    }
+                }).setType(new boolean[]{true, true, true, false, false, false})
+                        .build().show();
+            }
+        });
         activiyRegisterBinding.btnRegister.setOnClickListener(v -> {
             studentId = activiyRegisterBinding.etStudentId.getText().toString().trim();
             studentPwd = activiyRegisterBinding.etPwd.getText().toString().trim();
