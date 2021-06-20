@@ -119,7 +119,7 @@ public class StudentInfoActivity extends ThemeActivity {
     }
 
     public String getTime(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-HH-mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(date);
     }
 }

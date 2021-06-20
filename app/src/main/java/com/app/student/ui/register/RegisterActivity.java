@@ -43,7 +43,7 @@ public class RegisterActivity extends ThemeActivity {
                 new TimePickerBuilder(RegisterActivity.this, new OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date, View v) {
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-HH-mm");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         activiyRegisterBinding.etBirth.setText(format.format(date));
                     }
                 }).setType(new boolean[]{true, true, true, false, false, false})
