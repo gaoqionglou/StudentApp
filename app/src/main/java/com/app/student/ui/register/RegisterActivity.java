@@ -33,8 +33,7 @@ public class RegisterActivity extends ThemeActivity {
         super.onCreate(savedInstanceState);
         activiyRegisterBinding = ActiviyRegisterBinding.inflate(LayoutInflater.from(this));
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
-//        setTitle("注册");
-        setTitle(R.string.student_name);
+        setTitle("注册");
         setContentView(activiyRegisterBinding.getRoot());
         activiyRegisterBinding.etBirth.setFocusable(false);
         activiyRegisterBinding.etBirth.setOnClickListener(new View.OnClickListener() {

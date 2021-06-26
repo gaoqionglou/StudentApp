@@ -37,8 +37,7 @@ public class AddStudentActivity extends ThemeActivity {
         super.onCreate(savedInstanceState);
         addStudentBinding = ActivityAddStudentBinding.inflate(LayoutInflater.from(this));
         setContentView(addStudentBinding.getRoot());
-//        getActionBarLayoutBinding().title.setText("添加学生信息");
-        setTitle(R.string.student_name);
+        getActionBarLayoutBinding().title.setText("添加学生信息");
         getActionBarLayoutBinding().setting.setText("保存");
         getActionBarLayoutBinding().setting.setVisibility(View.VISIBLE);
         getActionBarLayoutBinding().setting.setOnClickListener(v -> {

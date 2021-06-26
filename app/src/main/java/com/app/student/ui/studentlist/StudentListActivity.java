@@ -16,7 +16,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.app.student.R;
 import com.app.student.base.BaseActivity;
 import com.app.student.common.Constants;
 import com.app.student.databinding.ActionBarLayoutBinding;
@@ -100,6 +99,6 @@ public class StudentListActivity extends BaseActivity {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
-        actionBarViewBinding.title.setText(R.string.student_name);
+        actionBarViewBinding.title.setText("学生信息");
     }
 }

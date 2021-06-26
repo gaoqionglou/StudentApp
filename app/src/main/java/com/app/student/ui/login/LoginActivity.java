@@ -11,7 +11,6 @@ import android.widget.CompoundButton;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.app.student.R;
 import com.app.student.base.ThemeActivity;
 import com.app.student.common.Constants;
 import com.app.student.databinding.ActivityLoginBinding;
@@ -38,7 +37,6 @@ public class LoginActivity extends ThemeActivity {
         setContentView(activityLoginBinding.getRoot());
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         setCustomActionBar();
-        setTitle(R.string.student_name);
         activityLoginBinding.cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
