@@ -53,6 +53,10 @@ public class ThemeActivity extends BaseActivity {
         actionBarLayoutBinding.title.setText(title);
     }
 
+    public void setTitle(int titleResId) {
+        actionBarLayoutBinding.title.setText(titleResId);
+    }
+
     public ActionBarLayoutBinding getActionBarLayoutBinding() {
         return actionBarLayoutBinding;
     }

@@ -17,8 +17,6 @@ import com.app.student.databinding.ActivityWelcomeBinding;
 import com.app.student.ui.login.LoginActivity;
 import com.app.student.util.DataCreator;
 import com.app.student.util.SharedPreferencesUtils;
-import com.blankj.utilcode.constant.PermissionConstants;
-import com.blankj.utilcode.util.PermissionUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -31,7 +29,6 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityWelcomeBinding = ActivityWelcomeBinding.inflate(LayoutInflater.from(this));
         setContentView(activityWelcomeBinding.getRoot());
-        PermissionUtils.permission(PermissionConstants.STORAGE).request();
         if (SharedPreferencesUtils.getBoolean(MyApp.getMyApplication().getApplicationContext(), "isDataInit", false)) {
             //如果已经做了初始化，那么直接进入课表页面
             Intent intent = new Intent(this, LoginActivity.class);
@@ -42,8 +39,6 @@ public class WelcomeActivity extends AppCompatActivity {
         //没做过数据初始化的，进行数据初始化并加入数据库
         DataCreator.makeClassData();
         mHandler.sendEmptyMessageDelayed(1, 1000);
-        //动态权限申请
-        PermissionUtils.permission(PermissionConstants.STORAGE).request();
     }
 
 

@@ -2,6 +2,9 @@ package com.app.student.ui.studentlist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.app.student.R;
 import com.app.student.base.BaseActivity;
 import com.app.student.common.Constants;
 import com.app.student.databinding.ActionBarLayoutBinding;
@@ -34,7 +38,7 @@ public class StudentListActivity extends BaseActivity {
         setContentView(studentListBinding.getRoot());
         viewModel = new ViewModelProvider(this).get(StudentListViewModel.class);
         setCustomActionBar();
-        mAdapter = new StudentListAdapter(null, this);
+        mAdapter = new StudentListAdapter(null, this, viewModel);
         studentListBinding.rvStudentList.setLayoutManager(new LinearLayoutManager(this));
         studentListBinding.rvStudentList.setAdapter(mAdapter);
         viewModel.getStudentList().observe(this, new Observer<List<Student>>() {
@@ -47,6 +51,27 @@ public class StudentListActivity extends BaseActivity {
         studentListBinding.add.setOnClickListener(v -> {
             Intent intent = new Intent(StudentListActivity.this, AddStudentActivity.class);
             startActivity(intent);
+        });
+        studentListBinding.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String inputText = editable.toString();
+                if (TextUtils.isEmpty(inputText)) {
+                    viewModel.queryAllStudent();
+                    return;
+                }
+                viewModel.getStudentClassByNameOrStudentId(inputText);
+            }
         });
     }
 
@@ -75,6 +100,6 @@ public class StudentListActivity extends BaseActivity {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
-        actionBarViewBinding.title.setText("学生信息");
+        actionBarViewBinding.title.setText(R.string.student_name);
     }
 }

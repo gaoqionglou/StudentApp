@@ -11,18 +11,21 @@ import android.widget.CompoundButton;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.app.student.base.CommonActivity;
+import com.app.student.R;
+import com.app.student.base.ThemeActivity;
 import com.app.student.common.Constants;
 import com.app.student.databinding.ActivityLoginBinding;
 import com.app.student.ui.register.RegisterActivity;
 import com.app.student.ui.studentlist.StudentListActivity;
 import com.app.student.util.SharedPreferencesUtils;
+import com.blankj.utilcode.constant.PermissionConstants;
+import com.blankj.utilcode.util.PermissionUtils;
 
 import static com.app.student.common.Constants.REQUEST_CODE_REGISTER;
 import static com.app.student.util.ToastUtil.toast;
 
 
-public class LoginActivity extends CommonActivity {
+public class LoginActivity extends ThemeActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding activityLoginBinding;
@@ -30,11 +33,12 @@ public class LoginActivity extends CommonActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        PermissionUtils.permission(PermissionConstants.STORAGE).request();
         activityLoginBinding = ActivityLoginBinding.inflate(LayoutInflater.from(this));
         setContentView(activityLoginBinding.getRoot());
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         setCustomActionBar();
+        setTitle(R.string.student_name);
         activityLoginBinding.cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
