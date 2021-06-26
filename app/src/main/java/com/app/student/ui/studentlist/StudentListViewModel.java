@@ -22,4 +22,15 @@ public class StudentListViewModel extends ViewModel {
         }
     }
 
+    public void getStudentClassByNameOrStudentId(String value) {
+        List<Student> students = AppDatabase.getInstance().studentDao().getStudentClassByNameOrStudentId(value);
+        if (students != null && !students.isEmpty()) {
+            result.setValue(students);
+        }
+    }
+
+    public void deleteStudentById(String value) {
+        AppDatabase.getInstance().studentDao().deleteStudentClassById(value);
+    }
+
 }

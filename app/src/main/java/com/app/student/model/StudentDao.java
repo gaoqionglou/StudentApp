@@ -27,4 +27,7 @@ public interface StudentDao {
 
     @Query("DELETE FROM Student where student_id=:stdId")
     int deleteStudentClassById(String stdId);
+
+    @Query("SELECT * FROM Student WHERE student_id Like '%' || :value || '%' OR studentName=:value")
+    List<Student> getStudentClassByNameOrStudentId(String value);
 }

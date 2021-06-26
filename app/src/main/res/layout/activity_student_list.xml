@@ -13,10 +13,23 @@
         android:textSize="30sp"
         android:visibility="gone" />
 
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_margin="6dp"
+        android:background="@drawable/border_bg"
+        android:drawableStart="@drawable/ic_search_black_24dp"
+        android:gravity="start|center"
+        android:hint="输入学生学号或者姓名" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_student_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search"
+        android:layoutAnimation="@anim/layout_animation_fall_down" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"

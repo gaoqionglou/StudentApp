@@ -36,7 +36,8 @@ public class StudentInfoActivity extends ThemeActivity {
         super.onCreate(savedInstanceState);
         studentInfoBinding = ActivityStudentInfoBinding.inflate(LayoutInflater.from(this));
         setContentView(studentInfoBinding.getRoot());
-        getActionBarLayoutBinding().title.setText("学生信息编辑");
+        setTitle(R.string.student_name);
+//        getActionBarLayoutBinding().title.setText("学生信息编辑");
         getActionBarLayoutBinding().setting.setText("提交");
         getActionBarLayoutBinding().setting.setVisibility(View.VISIBLE);
         getActionBarLayoutBinding().setting.setOnClickListener(v -> {
